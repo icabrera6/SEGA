@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGA Signup Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="formulario">
+        <img src="img/SEGA_logo.png" alt="SEGA Logo" class="logo">
+        <h1>INTRODUCE TU EMAIL</h1>
+        <p>Regístrate pra obtener contenido y oferts exclusivas sobre tus juegos favoritos directamente a tu bandeja de entrada!</p>
+        <p>Already subscribed? Enter your email to update your preferences.</p>
+        
+        <form>
+            <label for="fecha">Fecha de nacimiento</label>
+            <input type="date" id="fecha" name="fecha" required>
+            
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre aquí..." required>
+            
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apedillos" placeholder="Tus apellidos aquí..." required>
+            
+            <label for="country">País</label>
+            <select id="país" name="país" required>
+                <option value="" disabled selected>Tu país...</option>
+                <option value="us">Estados Unidos</option>
+                <option value="uk">Reino Unido</option>
+                <option value="es">España</option>
+                <option value="fr">Francia</option>
+            </select>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu-email@ejemplo.com" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
