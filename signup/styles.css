@@ -118,7 +118,6 @@ button:hover {
     color: #ffffff;
 }
 
-
 .input-field select {
     width: 100%;
     height: 40px;
@@ -140,7 +139,6 @@ button:hover {
     border-color: #ffffff;
 }
 
-
 .input-field input[type="date"] {
     width: 100%;
     height: 40px;
@@ -158,19 +156,25 @@ button:hover {
     border-color: #ffffff;
 }
 
-
 .input-field input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(50%);
+    filter: invert(100%); /* Cambia el color del icono al blanco */
     cursor: pointer;
 }
 
 .input-field input[type="date"]::-moz-calendar-picker-indicator {
-    color: gray;
+    color: #ffffff; /* Blanco para navegadores Mozilla */
     cursor: pointer;
 }
 
 .input-field input[type="date"]::-ms-clear {
-    display: none;
+    display: none; /* Oculta el botón de limpiar en navegadores antiguos */
+}
+
+/* Placeholder en blanco */
+.input-field input::placeholder,
+.input-field select::placeholder {
+    color: #ffffff; /* Blanco */
+    opacity: 1; /* Asegura que el color sea visible */
 }
 
 .forget {

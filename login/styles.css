@@ -110,6 +110,12 @@ button:hover {
     outline: none;
 }
 
+/* Placeholder en blanco */
+.input-field input::placeholder {
+    color: #ffffff; /* Blanco */
+    opacity: 1; /* Asegura que el color sea visible */
+}
+
 .input-field input:focus~label,
 .input-field input:valid~label {
     top: 10px;
