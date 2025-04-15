@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
 class Juego(db.Model):
-    Id=db.Column(db.Integer, primary_key=True)
+    IdJuego=db.Column(db.Integer, primary_key=True)
     Nombre=db.Column(db.String(50), nullable=True)
     Genero=db.Column(db.String(50), nullable=True)
     Descripcion=db.Column(db.String(50), nullable=True)
@@ -19,13 +19,15 @@ class Juego(db.Model):
 @app.route('/añadir_juego',methods=["GET","POST"])
 def add_game():
     if request.method == 'POST':
-        id = request.form.get('id')
-        fecha_nacimiento = request.form.get('fecha_nacimiento')
+        id = request.form.get('idjuego')
         nombre = request.form.get('nombre')
-        apellidos = request.form.get('apellidos')            
-        pais = request.form.get('pais')
-        gmail = request.form.get('gmail')
-        nuevo_usuario = Juego(Id=id, Fecha_nacimiento=fecha_nacimiento, Nombre=nombre, Apellidos=apellidos, Pais=pais, Gmail=gmail)
-        db.session.add(nuevo_usuario)
+        genero = request.form.get('genero')
+        descripcion = request.form.get('descripcion')
+        imagen = request.form.get('imagen')
+        nuevo_juego = Juego(IdJuego=id, Nombre=nombre, Genero=genero, Descripcion=descripcion, Imagen=imagen)
+        db.session.add(nuevo_juego)
         db.session.commit()
         return redirect(url_for('get_libros'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
