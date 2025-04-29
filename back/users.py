@@ -37,3 +37,25 @@ def add_user():
         
         return render_template('new_libro.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login_user():
+    if request.method == "POST":
+        gmail = request.form.get('gmail')
+        user = User.query.filter_by(gmail=gmail).first()
+        if user:
+            return redirect(url_for('user_profile', user_id=user.id)) 
+        else:
+            return render_template('user_profile_failed.html')
+    return render_template('sesion.html')
+
+# Perfil de usuario
+@app.route('/user/<int:user_id>')
+def user_profile(user_id):
+    user = User.query.get(user_id)
+    if user:
+        return render_template('user_profile.html', user=user)
+    else:
+        return render_template('user_profile_failed.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
