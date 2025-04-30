@@ -38,7 +38,7 @@ body::before {
     padding: 15px 30px;
     background-color: #353333;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Ensure it stays above other elements */
+    z-index: 1000;
     font-family: Arial, sans-serif;
 }
 
@@ -55,10 +55,10 @@ body::before {
     display: flex;
     gap: 20px;
     align-items: center;
-    position: absolute; /* Revert to absolute positioning */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Ensure proper centering */
-    margin: 0; /* Remove auto margin */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
 .navbar .menu a {
@@ -79,7 +79,7 @@ body::before {
     margin-right: 50px;
 }
 
-/* Wrapper */
+/* Login / Register */
 .wrapper {
     width: 400px;
     border-radius: 15px;
@@ -153,7 +153,6 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Input field styles */
 .input-field {
     position: relative;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
@@ -216,7 +215,7 @@ button:hover {
     opacity: 1;
 }
 
-/* Forget */
+
 .forget {
     display: flex;
     align-items: center;
@@ -337,15 +336,16 @@ main {
 
 .news-container {
     display: flex;
-    flex-direction: row; /* Alineación horizontal */
-    flex-wrap: wrap; /* Permitir que las noticias se ajusten si no caben */
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 20px;
 }
+/* News */
 
 .news-item {
-    flex: 0 1 300px; /* Asegura un ancho fijo para cada noticia */
+    flex: 0 1 300px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -397,17 +397,19 @@ main {
     color: #353333;
 }
 
+/* Games */
+
 .games-container {
     display: flex;
-    flex-direction: row; /* Alineación horizontal */
-    flex-wrap: wrap; /* Permitir que los juegos se ajusten si no caben */
+    flex-direction: row;
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 20px;
     padding: 20px;
 }
 
 .game-item {
-    flex: 0 1 300px; /* Asegura un ancho fijo para cada juego */
+    flex: 0 1 300px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -459,3 +461,4 @@ main {
     color: #353333;
 }
 
+/* */
