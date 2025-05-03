@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/img/logo.png" type="image">
+    <title>Gamers | Registro</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="{{ url_for('BPusuarios.add_user') }}" method="post">
+            <h2>👻 GAYMERS 👻</h2>
+            <div class="input-field">
+                <input type="text" placeholder="Nombre" name="Nombre" id="Nombre" required>
+            </div>
+            <div class="input-field">
+                <label for="Apellidos">Apellidos: </label><br>
+                <input type="text" placeholder="Apellidos" name="Apellidos" id="Apellidos" required>
+            </div>
+            <div class="input-field">
+                <label for="FechaNacimiento">Fecha de nacimiento:</label><br>
+                <input type="date" placeholder="Fecha de nacimiento" name="FechaNacimiento" id="FechaNacimiento" required>
+            </div>
+            <div class="input-field">
+                <select name="Pais" id="Pais" required>
+                    <option value="" disabled selected>Selecciona tu país</option>
+                    <option value="es">España</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                    <option value="cl">Chile</option>
+                    <option value="co">Colombia</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="Email">Email:</label><br>
+                <input type="email" placeholder="Email" name="Email" id="Email" required>
+            </div>
+            <div class="input-field">
+                <label for="Contraseña">Contraseña:</label><br>
+                <input type="password" placeholder="Contraseña" name="Contraseña" id="Contraseña" required>
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+        <div class="login">
+            <span class="text">¿Ya tienes una cuenta?</span>
+            <form action="{{ url_for('BPusuarios.login_user') }}" method="get">
+                <button type="submit">Inicia sesión</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

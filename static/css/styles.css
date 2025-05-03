@@ -165,9 +165,10 @@ button:hover {
     left: 0;
     transform: translateY(-50%);
     font-size: 16px;
-    color: #ffffff;
+    color: #000000;
     pointer-events: none;
     transition: all 0.3s ease;
+    padding-bottom: 40px;
 }
 
 .input-field input, .input-field select, .input-field input[type="date"] {

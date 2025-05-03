@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/img/logo.png" type="image">
+    <title>Gamers | Login</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="{{ url_for('BPusuarios.login_user') }}" method="post">
+            <h2>👻 GAMERS 👻</h2>
+            <div class="input-field">
+                <label for="Email">Email:</label><br>
+                <input type="email" placeholder="Email" name="Email" id="Email" required>
+            </div>
+            <div class="input-field">
+                <label for="Contraseña">Contraseña:</label><br>
+                <input type="password" placeholder="Contraseña" name="Contraseña" id="Contraseña" required>
+            </div>
+            <!-- <div class="forget">
+                <label for="remember">
+                    <input type="checkbox" id="remember">
+                    <span class="text">Recuerdame</span>
+                </label>
+            </div> -->
+            <button type="submit">Log In</button>
+        </form>
+        <div class="login">
+            <span class="text">No tienes una cuenta?</span>
+            <form action="{{ url_for('BPusuarios.add_user') }}" method="get">
+                <button type="submit">Registrate</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
