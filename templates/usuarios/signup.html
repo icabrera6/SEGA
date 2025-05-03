@@ -44,9 +44,7 @@
         </form>
         <div class="login">
             <span class="text">¿Ya tienes una cuenta?</span>
-            <form action="{{ url_for('BPusuarios.login_user') }}" method="get">
-                <button type="submit">Inicia sesión</button>
-            </form>
+            <a href="{{ url_for('BPusuarios.login_user') }}">Inicia sesión</a>
         </div>
     </div>
 </body>

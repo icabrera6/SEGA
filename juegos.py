@@ -18,3 +18,8 @@ def add_game():
         db.session.commit()
         return redirect(url_for('add_game'))
     return render_template('add.html')
+
+@BPjuegos.route('/juegos')
+def juegos():
+    todos = Juego.query.all()
+    return render_template('juegos/juegos.html', juegos=todos)

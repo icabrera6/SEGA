@@ -19,8 +19,10 @@ app.register_blueprint(BPjuegos, url_prefix='/juegos')
 
 @app.route('/',methods=["GET","POST"])
 def cargar_login():
-    return render_template('login.html')
-
+    return render_template('usuarios/login.html')
+@app.route('/index',methods=["GET","POST"])
+def cargar_index():
+    return render_template('index.html')
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

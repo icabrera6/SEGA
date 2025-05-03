@@ -25,7 +25,7 @@ def add_noticia():
 @BPnoticias.route('/noticias')
 def noticias():
     todas = Noticia.query.all()
-    return render_template('noticias.html', noticias=todas)
+    return render_template('noticias/noticias.html', noticias=todas)
 
 # Eliminar noticia
 @BPnoticias.route('/noticia/delete/<int:noticia_id>', methods=['POST'])

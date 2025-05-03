@@ -10,13 +10,13 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            <a href="./index.html">
+            <a href="{{ url_for('cargar_index') }}">
                 <img src="../static/img/logo.png" alt="SEGA Logo" style="height: 50px;">
             </a>
         </div>
         <div class="menu">
-            <a href="./games.html">Juegos</a>
-            <a href="./news.html">Noticias</a>
+            <a href="{{ url_for('BPjuegos.juegos') }}">Juegos</a>
+            <a href="{{ url_for('BPnoticias.noticias') }}">Noticias</a>
         </div>
         <div class="login-container">
             <a href="./login.html" class="login">

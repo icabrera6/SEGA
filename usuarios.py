@@ -20,7 +20,7 @@ def add_user():
         db.session.add(nuevo_usuario)
         db.session.commit()
         return redirect(url_for('BPusuarios.login_user'))
-    return render_template('signup.html')
+    return render_template('usuarios/signup.html')
 
 @BPusuarios.route('/login', methods=['GET', 'POST'])
 def login_user():
@@ -31,8 +31,8 @@ def login_user():
         if usuario and contraseña == usuario.Contraseña:
             return render_template('index.html')
         else:
-            return render_template('login.html')
-    return render_template('login.html')
+            return render_template('usuarios/login.html')
+    return render_template('usuarios/login.html')
 
 # Perfil de usuario
 @BPusuarios.route('/user/<int:user_id>')

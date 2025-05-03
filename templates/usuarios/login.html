@@ -29,9 +29,7 @@
         </form>
         <div class="login">
             <span class="text">No tienes una cuenta?</span>
-            <form action="{{ url_for('BPusuarios.add_user') }}" method="get">
-                <button type="submit">Registrate</button>
-            </form>
+            <a href="{{ url_for('BPusuarios.add_user') }}">Registrate</a>
         </div>
     </div>
 </body>
