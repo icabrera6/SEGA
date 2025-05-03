@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+
+from datetime import datetime
+from sqlalchemy import Column, Integer, String, DateTime
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///BibliotecaCapitan'
@@ -13,6 +16,7 @@ class Noticia(db.Model):
     Juego = db.Column(db.String(50), nullable=True)
     Titulo = db.Column(db.String(50), nullable=True)
     Texto = db.Column(db.String(1000), nullable=True)
+    Img = db.Column(db.String(1000), nullable=True)
 
 # Crear noticia
 @app.route('/signup', methods=['GET', 'POST'])
@@ -22,7 +26,8 @@ def add_noticia():
         Juego = request.form.get('juego')
         Titulo = request.form.get('titulo')            
         Texto = request.form.get('texto')
-        new_noticia = Noticia(Id=Id, Juego=Juego, Titulo=Titulo, Texto=Texto)
+        Img = request.form.get('img')
+        new_noticia = Noticia(Id=Id, Juego=Juego, Titulo=Titulo, Texto=Texto, Img=Img)
         db.session.add(new_noticia)
         db.session.commit()
         return redirect(url_for('noticias')) 
@@ -52,6 +57,7 @@ def edit_noticia(noticia_id):
         noticia.Juego = request.form.get('juego')
         noticia.Titulo = request.form.get('titulo')
         noticia.Texto = request.form.get('texto')
+        noticia.Img = request.form.get('img')
         db.session.commit()
         return redirect(url_for('noticias')) 
 
