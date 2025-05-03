@@ -10,9 +10,13 @@ Página Web Juegos
 Página web sobre **"JUEGOS"** con apartados Frontend y Backend para gestionar usuarios, juegos y noticias.
 
 Para hacer este proyecto hemos usado:  
-  *Git*  
-  *GitGraph*  
-- *Github*  
-  *VSCode* (*HTML*, *CSS*, *PYTHON*, *FLASK*)  
-  *Notion*  
-  *Drive*  
+- *Git*  
+- *GitGraph*  
+- *Github*
+- *VSCode*
+  - *HTML*
+  - *CSS*
+  - *PYTHON*
+  - *FLASK*
+- *Notion*
+- *Drive*  
