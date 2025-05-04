@@ -8,50 +8,31 @@
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="./index.html">
-                <img src="../static/img/logo.png" alt="SEGA Logo" style="height: 50px;">
-            </a>
-        </div>
-        <div class="menu">
-            <a href="./games.html">Juegos</a>
-            <a href="./news.html">Noticias</a>
-        </div>
-        <div class="login-container">
-            <a href="./login.html" class="login">
-                <img src="../static/img/login.png" alt="Login" style="height: 40px; width: auto; position: relative; top: 5px;">
-            </a>
-        </div>
-    </nav>
-
-    <div style="height: 70px;"></div>
-
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
     <div class="wrapper">
         <h2>Añadir Contenido</h2>
         <div class="add-container">
             <div class="add-section add-news">
                 <h3>Añadir Noticia</h3>
-                <form action="/añadir_noticia" method="post">
+                <form action="{{ url_for('BPnoticias.add_noticia') }}" method="post" enctype="multipart/form-data">
                     <div class="input-field">
-                        <label for="Titulo">Titulo:</label><br>
                         <input type="text" placeholder="Título de la noticia" name="Titulo" id="Titulo" required>
                     </div>
                     <div class="input-field">
-                        <label for="Subtitulo">Subtitulo:</label><br>
                         <input type="text" placeholder="Subtítulo de la noticia" name="Subtitulo" id="Subtitulo" required>
                     </div>
                     <div class="input-field">
-                        <label for="Fecha">Fecha:</label><br>
                         <input type="date" placeholder="Fecha de la noticia" name="Fecha" id="Fecha" required>
                     </div>
                     <div class="input-field">
-                        <label for="Contenido">Descripción:</label><br>
-                        <textarea placeholder="Contenido de la noticia" name="Contenido" id="Contenido" required></textarea>
+                        <textarea style="max-width: 100%; width: 100%;" placeholder="Contenido de la noticia" name="Contenido" id="Contenido" required></textarea>
                     </div>
                     <div class="input-field">
-                        <label for="Img">Imagen:</label><br>
-                        <input type="url" placeholder="URL de la Imagen" name="Img" id="Img" required>
+                        <input type="file" name="Img" id="Img" accept="image/*" required>
                     </div>
                     <button type="submit">Añadir Noticia</button>
                 </form>

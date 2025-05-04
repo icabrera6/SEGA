@@ -15,12 +15,12 @@
     {% endif %}
     <div style="height: 70px;"></div>
     <main class="games-container">
-        {% for juego in juegos %}
-        <section class="game-item" id="{{ juego.IdJuego }}" href="{{ url_for('BPjuegos.detalle_juego', id=juego.IdJuego) }}">
-            <img src="{{juego.Imagen}}">
-            <h2>{{juego.Nombre}}</h2>
-            <h3>{{juego.Genero}}</h3>
-            <p>{{juego.Descripcion}}</p>
+        {% for juegoind in juego %}
+        <section class="game-item">
+            <img src="{{juegoind.Imagen}}">
+            <h2>{{juegoind.Nombre}}</h2>
+            <h3>{{juegoind.Genero}}</h3>
+            <p>{{juegoind.Descripcion}}</p>
             <a href="#">Descargar</a>
         </section>
         {% endfor %}

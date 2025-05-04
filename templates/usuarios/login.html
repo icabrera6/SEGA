@@ -12,19 +12,11 @@
         <form action="{{ url_for('BPusuarios.login_user') }}" method="post">
             <h2>👻 GAMERS 👻</h2>
             <div class="input-field">
-                <label for="Email">Email:</label><br>
                 <input type="email" placeholder="Email" name="Email" id="Email" required>
             </div>
             <div class="input-field">
-                <label for="Contraseña">Contraseña:</label><br>
                 <input type="password" placeholder="Contraseña" name="Contraseña" id="Contraseña" required>
             </div>
-            <!-- <div class="forget">
-                <label for="remember">
-                    <input type="checkbox" id="remember">
-                    <span class="text">Recuerdame</span>
-                </label>
-            </div> -->
             <button type="submit">Log In</button>
         </form>
         <div class="login">

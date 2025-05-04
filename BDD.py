@@ -14,7 +14,7 @@ class Juego(db.Model):
     IdJuego = db.Column(db.Integer, primary_key=True)
     Nombre = db.Column(db.String(50), nullable=True)
     Genero = db.Column(db.String(50), nullable=True)
-    Descripcion = db.Column(db.String(50), nullable=True)
+    Descripcion = db.Column(db.String(200), nullable=True)
     Imagen = db.Column(db.String(50), nullable=True)
 
 class Noticia(db.Model):

@@ -5,31 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../static/img/logo.png" type="image">
     <title>Gamers | Perfil</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../../static/css/styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="./index.html">
-                <img src="../static/img/logo.png" alt="SEGA Logo" style="height: 50px;">
-            </a>
-        </div>
-        <div class="menu">
-            <a href="./games.html">Juegos</a>
-            <a href="./news.html">Noticias</a>
-        </div>
-        <div class="login-container">
-            <a href="./login.html" class="login">
-                <img src="../static/img/login.png" alt="Login" style="height: 40px; width: auto; position: relative; top: 5px;">
-            </a>
-        </div>
-    </nav>
-    <div style="height: 70px;"></div>
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
     <main class="profile-container">
         <div class="profile-card-wrapper">
             <button class="nav-btn prev-btn"><</button>
             <div class="profile-card">
-                <img src="../static/img/avatar.png" alt="Avatar" class="profile-avatar">
+                <img src="../../static/img/avatar.png" alt="Avatar" class="profile-avatar">
                 <h2>Nombre del Usuario</h2>
                 <p><strong>Email:</strong> usuario@example.com</p>
                 <p><strong>Fecha de nacimiento:</strong> 01/01/2000</p>

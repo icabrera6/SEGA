@@ -8,25 +8,12 @@
     <title>Gamers | Inicio</title>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="{{ url_for('cargar_index') }}">
-                <img src="../static/img/logo.png" alt="SEGA Logo" style="height: 50px;">
-            </a>
-        </div>
-        <div class="menu">
-            <a href="{{ url_for('BPjuegos.juegos') }}">Juegos</a>
-            <a href="{{ url_for('BPnoticias.noticias') }}">Noticias</a>
-        </div>
-        <div class="login-container">
-            <a href="./login.html" class="login">
-                <img src="../static/img/login.png" alt="Login" style="height: 40px; width: auto; position: relative; top: 5px;">
-            </a>
-        </div>
-    </nav>
-    <div style="height: 70px;"></div>
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
     <main>
-        
         <section class="container" style="padding: 0;">
             <div class="slider-wrapper">
                 <div class="slider">
@@ -41,7 +28,6 @@
                 </div>
             </div>
         </section>
-
         <div class="info">
             <div class="info-column">
                 <h3>👾 Quiénes somos</h3>
@@ -62,7 +48,6 @@
                 </p>
             </div>
         </div>
-
     </main>
 </body>
 </html>

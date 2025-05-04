@@ -1,8 +1,10 @@
-from flask import Blueprint, Flask, jsonify, render_template, request, redirect, url_for
+from flask import Blueprint, Flask, jsonify, render_template, request, redirect, url_for, session, current_app
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
 from BDD import db, Noticia
+import os
+from werkzeug.utils import secure_filename
 
 BPnoticias = Blueprint('BPnoticias', __name__)
 
@@ -14,18 +16,24 @@ def add_noticia():
         fecha = request.form.get('Fecha')
         fechamod = datetime.strptime(fecha, '%Y-%m-%d').date()
         contenido = request.form.get('Contenido')
-        img = request.form.get('Img')
-        nueva_noticia = Noticia(Titulo=titulo, Subtitulo=subtitulo, Fecha=fechamod, Contenido=contenido, Img=img)
+        img = request.files['Img']
+        nombre = secure_filename(img.filename)
+        print(f"Titulo: {titulo}, Subtitulo: {subtitulo}, Fecha: {fecha}, Contenido: {contenido}, Img: {nombre}")
+        ruta = os.path.join(current_app.config['UPLOAD_FOLDER'], nombre)
+        img.save(ruta)
+        rutaimg = '../../static/img/'+nombre
+        nueva_noticia = Noticia(Titulo=titulo, Subtitulo=subtitulo, Fecha=fechamod, Contenido=contenido, Img=rutaimg)
         db.session.add(nueva_noticia)
         db.session.commit()
-        return redirect(url_for('noticias'))
-    print("Formulario de añadir noticia")
-    return render_template('añadir_noticias.html')  
+        return redirect(url_for('BPnoticias.add_noticia'))
+    es_admin = session.get('admin', False)
+    return render_template('noticias/gestionar_noticias.html', es_admin=es_admin)  
 
 @BPnoticias.route('/noticias')
 def noticias():
     todas = Noticia.query.all()
-    return render_template('noticias/noticias.html', noticias=todas)
+    es_admin = session.get('admin', False)
+    return render_template('noticias/noticias.html', noticias=todas, es_admin=es_admin)
 
 # Eliminar noticia
 @BPnoticias.route('/noticia/delete/<int:noticia_id>', methods=['POST'])
@@ -50,3 +58,8 @@ def edit_noticia(noticia_id):
         db.session.commit()
         return redirect(url_for('noticias')) 
     return render_template('edit_libro.html', noticia=noticia)
+
+@BPnoticias.route('/gestion_noticias')
+def gestion_noticias():
+    es_admin = session.get('admin', False)
+    return render_template('noticias/gestionar_noticias.html',es_admin=es_admin)
