@@ -27,7 +27,7 @@ Para hacer este proyecto hemos usado:
 1. Primero necesitamos tener VSCode instalado e instalar las extensiones de Git, GitGraph y Python (o instalarlo desde la web directamente).
 2. Después creamos los archivos necesarios y desde la terminal ejecutamos `pip install flask` para instalar Flask y poder usar endpoints.
 3. También instalamos SQLAlchemy con `pip install SQLAlchemy` para tener una base de datos.
-4. Finalmente para ejecutar el proyecto simplemente ponemos en la terminal `python app.py`.  
+4. Finalmente para ejecutar el proyecto simplemente ponemos en la terminal `python main.py`.  
 > [!WARNING]
 > Puede que alguna instalación falle, debido a la compatabilidad de versiones.  
 > Recomendamos actualizarlas para evitar problemas.
