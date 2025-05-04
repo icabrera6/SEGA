@@ -21,6 +21,8 @@ Para hacer este proyecto hemos usado:
   - *CSS*
   - *PYTHON*
   - *FLASK*
+  - *Blueprints*
+  - *SQLAlchemy*
 - *Notion*
 - *Drive*  
 ## INSTALACIÓN DEL PROYECTO
