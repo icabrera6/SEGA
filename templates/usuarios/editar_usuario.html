@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/logo.png" type="image">
+    <title>Gamers | Usuarios</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+<body>
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
+    <div style="height: 70px;"></div>
+    <main class="games-container">
+        <section class="game-item">
+            <form action="{{ url_for('BPusuarios.edit_usuario', usuario_id=usuario.IdUsuario) }}" method="post">
+                <div class="input-field">
+                    <input type="text" placeholder="Nombre" name="Nombre" id="Nombre" value="{{usuario.Nombre}}" required>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Apellidos" name="Apellidos" id="Apellidos" value="{{usuario.Apellidos}}" required>
+                </div>
+                <div class="input-field">
+                    <select name="Pais" id="Pais" required>
+                        <option value="" disabled selected>Selecciona tu país</option>
+                        <option value="es">España</option>
+                        <option value="mx">México</option>
+                        <option value="ar">Argentina</option>
+                        <option value="cl">Chile</option>
+                        <option value="co">Colombia</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <input type="email" placeholder="Email" name="Email" id="Email" value="{{usuario.Email}}" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" placeholder="Contraseña" name="Contraseña" id="Contraseña" value="{{usuario.Contraseña}}" required>
+                </div>
+                <div class="input-field">
+                    <label for="EsAdmin">Permisos Admin</label><br>
+                    <input type="checkbox" placeholder="Usuario Admin" name="EsAdmin" id="EsAdmin" checked="{{ usuario.EsAdmin }}">
+                </div>
+                <button type="submit">Editar Usuario</button>
+            </form>
+            <form action="{{ url_for('BPusuarios.delete_usuario', usuario_id=usuario.IdUsuario) }}" method="POST">
+                <button type="submit">Borrar Usuario</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../static/img/logo.png" type="image">
-    <title>Gamers | Noticias</title>
+    <title>Gamers | Añadir Contenido</title>
     <link rel="stylesheet" href="../../static/css/styles.css">
 </head>
 <body>
@@ -13,15 +13,15 @@
     {% else %}
         {% include 'navbar.html' %}
     {% endif %}
-    <main class="news-container">
+    <main class="games-container">
         {% for noticia in noticias %}
-        <section class="news-item" id="{{ noticia.IdNoticia }}">
+        <section class="game-item" id="{{ noticia.IdNoticia }}">
             <img src="{{noticia.Img}}">
             <h2>{{noticia.Titulo}}</h2>
             <h3 class="Subtitulo">{{noticia.Subtitulo}}</h3>
             <h4>{{noticia.Fecha}}</h4>
             <p class="Texto">{{noticia.Contenido}}</p>
-            <a href="{{ url_for('BPnoticias.detail_noticia', noticia_id=noticia.IdNoticia) }}">Leer más</a>
+            <a href="{{ url_for('BPnoticias.edit_noticia', noticia_id=noticia.IdNoticia) }}">Ver más</a>
         </section>
         {% endfor %}
     </main>

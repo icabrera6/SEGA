@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/logo.png" type="image">
+    <title>Gamers | Juegos</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+<body>
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
+    <div style="height: 70px;"></div>
+    <main class="games-container">
+        <section class="game-item">
+            <img src="{{juego.Imagen}}">
+            <form action="{{ url_for('BPjuegos.edit_juego', juego_id=juego.IdJuego) }}" method="post">
+                <div class="input-field">
+                    <input type="text" placeholder="Nombre del Juego" name="Nombre" id="Nombre" value="{{juego.Nombre}}" required>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Género del Juego" name="Genero" id="Genero" value="{{juego.Genero}}" required>
+                </div>
+                <div class="input-field">
+                    <textarea style="max-width: 100%; width: 100%;" placeholder="Descripción del Juego" name="Descripcion" id="Descripcion" required>{{juego.Descripcion}}</textarea>
+                </div>
+                <button type="submit">Editar Juego</button>
+            </form>
+            <form action="{{ url_for('BPjuegos.delete_juego', juego_id=juego.IdJuego) }}" method="POST">
+                <button type="submit">Borrar Juego</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

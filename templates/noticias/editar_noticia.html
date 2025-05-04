@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/logo.png" type="image">
+    <title>Gamers | Noticias</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+<body>
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
+    <div style="height: 70px;"></div>
+    <main class="news-container">
+        <section class="game-item">
+            <img src="{{noticia.Img}}">
+            <form action="{{ url_for('BPnoticias.edit_noticia', noticia_id=noticia.IdNoticia) }}" method="POST">
+                <div class="input-field">
+                    <input type="text" placeholder="Título de la noticia" name="Titulo" id="Titulo" value="{{noticia.Titulo}}" required>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Subtítulo de la noticia" name="Subtitulo" id="Subtitulo" value="{{noticia.Subtitulo}}" required>
+                </div>
+                <div class="input-field">
+                    <textarea style="max-width: 100%; width: 100%;" placeholder="Contenido de la noticia" name="Contenido" id="Contenido" required>{{noticia.Contenido}}</textarea>
+                </div>
+                <button type="submit">Editar Noticia</button>
+            </form>
+            <form action="{{ url_for('BPnoticias.delete_noticia', noticia_id=noticia.IdNoticia) }}" method="POST">
+                <button type="submit">Borrar Noticia</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

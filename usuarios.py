@@ -72,10 +72,31 @@ def gestion_usuarios():
     es_admin = session.get('admin', False)
     return render_template('usuarios/gestionar_usuarios.html', es_admin=es_admin)
 
-""" @BPusuarios.route('/delete_user/<int:user_id>', methods=['POST'])
-def delete_user(user_id):
-    user = Usuario.query.get(user_id)
-    if user:
-        db.session.delete(user)
+@BPusuarios.route('/editar_usuarios', methods=['GET'])
+def edit_usuarios():
+    usuarios = Usuario.query.all()
+    es_admin = session.get('admin', False)
+    return render_template('usuarios/editar_usuarios.html', usuarios=usuarios, es_admin=es_admin)
+
+@BPusuarios.route('/editar_usuario/<int:usuario_id>', methods=['GET','POST'])
+def edit_usuario(usuario_id):
+    usuario = Usuario.query.get(usuario_id)
+    if request.method == 'POST':
+        usuario.Nombre = request.form.get('Nombre')
+        usuario.Apellidos = request.form.get('Apellidos')
+        usuario.Pais = request.form.get('Pais')
+        usuario.Email = request.form.get('Email')
+        usuario.Contraseña = request.form.get('Contraseña')
+        usuario.EsAdmin = request.form.get('EsAdmin') == 'on'
         db.session.commit()
-        return f"Mensaje: El usuario con el ID {user_id} ha sido eliminado """
+        return redirect(url_for('BPusuarios.edit_usuarios'))
+    es_admin = session.get('admin', False)
+    return render_template('usuarios/editar_usuario.html', usuario=usuario, es_admin=es_admin)
+
+@BPusuarios.route('/usuariodelete/<int:usuario_id>', methods=['POST'])
+def delete_usuario(usuario_id):
+    usuario = Usuario.query.get(usuario_id)
+    if usuario:
+        db.session.delete(usuario)
+        db.session.commit()
+    return redirect(url_for('BPusuarios.edit_usuarios'))

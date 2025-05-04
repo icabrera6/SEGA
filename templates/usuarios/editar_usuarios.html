@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/logo.png" type="image">
+    <title>Gamers | Añadir Contenido</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+<body>
+    {% if es_admin %}
+        {% include 'navbarAdmin.html' %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
+    <main class="games-container">
+        {% for usuario in usuarios %}
+        <section class="game-item" id="{{ usuario.Idusuario }}">
+            <h2>{{usuario.Nombre}} {{usuario.Apellidos}}</h2>
+            <h3>{{usuario.FechaNacimiento}}</h3>
+            <h3>{{usuario.Pais}}</h3>
+            <h3>{{usuario.Email}}</h3>
+            <h3>{{usuario.Contraseña}}</h3>
+            <a href="{{ url_for('BPusuarios.edit_usuario', usuario_id=usuario.IdUsuario) }}">Ver más</a>
+        </section>
+        {% endfor %}
+    </main>
+</body>
+</html>

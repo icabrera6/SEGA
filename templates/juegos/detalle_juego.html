@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../static/img/logo.png" type="image">
+    <link rel="icon" href="../../static/img/logo.png" type="image">
     <title>Gamers | Juegos</title>
     <link rel="stylesheet" href="../../static/css/styles.css">
 </head>
@@ -15,15 +15,13 @@
     {% endif %}
     <div style="height: 70px;"></div>
     <main class="games-container">
-        {% for juegoind in juego %}
         <section class="game-item">
-            <img src="{{juegoind.Imagen}}">
-            <h2>{{juegoind.Nombre}}</h2>
-            <h3>{{juegoind.Genero}}</h3>
-            <p>{{juegoind.Descripcion}}</p>
+            <img src="{{juego.Imagen}}">
+            <h2>{{juego.Nombre}}</h2>
+            <h3>{{juego.Genero}}</h3>
+            <p>{{juego.Descripcion}}</p>
             <a href="#">Descargar</a>
         </section>
-        {% endfor %}
     </main>
 </body>
 </html>

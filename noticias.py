@@ -35,31 +35,40 @@ def noticias():
     es_admin = session.get('admin', False)
     return render_template('noticias/noticias.html', noticias=todas, es_admin=es_admin)
 
-# Eliminar noticia
-@BPnoticias.route('/noticia/delete/<int:noticia_id>', methods=['POST'])
+@BPnoticias.route('/editar_noticias', methods=['GET'])
+def edit_noticias():
+    noticias = Noticia.query.all()
+    es_admin = session.get('admin', False)
+    return render_template('noticias/editar_noticias.html', noticias=noticias, es_admin=es_admin)
+
+@BPnoticias.route('/editar_noticia/<int:noticia_id>', methods=['GET','POST'])
+def edit_noticia(noticia_id):
+    noticia = Noticia.query.get(noticia_id)
+    if request.method == 'POST':
+        noticia.Titulo = request.form.get('Titulo')
+        noticia.Subtitulo = request.form.get('Subtitulo')
+        noticia.Contenido = request.form.get('Contenido')
+        db.session.commit()
+        return redirect(url_for('BPnoticias.edit_noticias'))
+    es_admin = session.get('admin', False)
+    return render_template('noticias/editar_noticia.html', noticia=noticia, es_admin=es_admin)
+
+@BPnoticias.route('/noticiadelete/<int:noticia_id>', methods=['POST'])
 def delete_noticia(noticia_id):
     noticia = Noticia.query.get(noticia_id)
     if noticia:
-        db.session.delete(noticia)
-        db.session.commit()
-        return f"Mensaje: La noticia con el ID {noticia_id} ha sido eliminada correctamente."
-    else:
-        return jsonify({"error": "Noticia no encontrada"}), 404
-
-# Editar noticia
-@BPnoticias.route('/noticia/edit/<int:noticia_id>', methods=['GET', 'POST'])
-def edit_noticia(noticia_id):
-    noticia = Noticia.query.get_or_404(noticia_id)
-    if request.method == 'POST':
-        noticia.Juego = request.form.get('juego')
-        noticia.Titulo = request.form.get('titulo')
-        noticia.Texto = request.form.get('texto')
-        noticia.Img = request.form.get('img')
-        db.session.commit()
-        return redirect(url_for('noticias')) 
-    return render_template('edit_libro.html', noticia=noticia)
+        if request.method == 'POST':
+            db.session.delete(noticia)
+            db.session.commit()
+    return redirect(url_for('BPnoticias.noticias'))
 
 @BPnoticias.route('/gestion_noticias')
 def gestion_noticias():
     es_admin = session.get('admin', False)
     return render_template('noticias/gestionar_noticias.html',es_admin=es_admin)
+
+@BPnoticias.route('/detalle_noticia/<int:noticia_id>', methods=['GET'])
+def detail_noticia(noticia_id):
+    noticia = Noticia.query.get_or_404(noticia_id)
+    es_admin = session.get('admin', False)
+    return render_template('noticias/detalle_noticia.html', noticia=noticia, es_admin=es_admin)

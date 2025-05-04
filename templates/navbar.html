@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="icon" href="../static/img/logo.png" type="image">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="icon" href="../../static/img/logo.png" type="image">
     <title>Gamers | Inicio</title>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
             <a href="{{ url_for('cargar_index') }}">
-                <img src="../static/img/logo.png" alt="SEGA Logo" style="height: 50px;">
+                <img src="../../static/img/logo.png" alt="SEGA Logo" style="height: 50px;">
             </a>
         </div>
         <div class="menu">
@@ -22,7 +22,7 @@
         <div class="login-container">
             <a href="{{ url_for('BPusuarios.log_out') }}" class="login">Cerrar Sesión</a>
             <a href="{{ url_for('BPusuarios.user_profile') }}" class="login">
-                <img src="../static/img/login.png" alt="Login" style="height: 40px; width: auto; position: relative; top: 5px;">
+                <img src="../../static/img/login.png" alt="Login" style="height: 40px; width: auto; position: relative; top: 5px;">
             </a>
         </div>
     </nav>
