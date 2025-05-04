@@ -16,7 +16,7 @@
     <div style="height: 70px;"></div>
     <main class="games-container">
         {% for juego in juegos %}
-        <section class="game-item" id="{{ juego.IdJuego }}" href="{{ url_for('BPjuegos.detalle_juego', id=juego.IdJuego) }}">
+        <section class="game-item" id="{{ juego.IdJuego }}" href="{{ url_for('BPjuegos.detail_juego', juego_id=juego.IdJuego) }}">
             <img src="{{juego.Imagen}}">
             <h2>{{juego.Nombre}}</h2>
             <h3>{{juego.Genero}}</h3>

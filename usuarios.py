@@ -71,3 +71,11 @@ def user_profile():
 def gestion_usuarios():
     es_admin = session.get('admin', False)
     return render_template('usuarios/gestionar_usuarios.html', es_admin=es_admin)
+
+""" @BPusuarios.route('/delete_user/<int:user_id>', methods=['POST'])
+def delete_user(user_id):
+    user = Usuario.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return f"Mensaje: El usuario con el ID {user_id} ha sido eliminado """

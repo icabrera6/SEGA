@@ -36,7 +36,6 @@ def gestion_juegos():
     es_admin = session.get('admin', False)
     return render_template('juegos/gestionar_juegos.html', es_admin=es_admin)
 
-@BPjuegos.route('/detalle_juego', methods=['POST'])
-def delete_game(juego_id):
-    juego = Juego.query.get(juego_id)
-    print(juego)
+@BPjuegos.route('/detalle_juego/<int:juego_id>', methods=['POST'])
+def detail_juego(juego_id):
+    return render_template('juegos/detalle_juego.html', juego=juego_id)
